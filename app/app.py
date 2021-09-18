@@ -1,6 +1,5 @@
 import dash
 import dash_bootstrap_components as dbc
-import pandas as pd
 from flask import Flask
 
 server = Flask(__name__)
