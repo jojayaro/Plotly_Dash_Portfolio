@@ -15,6 +15,7 @@ import numpy as np
 import urllib, json
 from plotly.subplots import make_subplots
 from skimage import io
+import datetime
 
 from app import app
 
@@ -84,6 +85,7 @@ layout = html.Div([
     Input('intmag2h', 'n_intervals')
 )
 def mag2hstream(n):
+    today = datetime.datetime.now()
     urlmag2h = 'https://services.swpc.noaa.gov/products/solar-wind/mag-2-hour.json'
     responsemag2h = urllib.request.urlopen(urlmag2h)
     datamag2h = json.loads(responsemag2h.read().decode())
@@ -138,7 +140,10 @@ def mag2hstream(n):
         paper_bgcolor=colors['background'],
         font_color=colors['text']
     )
-    return(figsw2h)
+    if dfmag2h_1['time_tag'].iloc[0] < today:
+        dash.no_update
+    else:
+        return(figsw2h)
 
 @app.callback(
     Output('auroraoval', 'figure'),
