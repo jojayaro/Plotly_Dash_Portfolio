@@ -48,7 +48,7 @@ def query_group_st1(match,group):
     return ST1_group_count
 
 match_dict = {'WELL PURPOSE': 'NEW'}
-group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK', 'COLUMN': '$SUBSTANCE'}
+group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK'}
 
 def query_st1_grouped_3(year,week,column):
 
