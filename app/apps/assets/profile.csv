@@ -1,25 +1,25 @@
-Activity,Start,End,City,State/Province,Country,Latitude,Longitude,Role,Organization,Description
-Life,1983,,San Cristobal,Tachira,Venezuela,7.7714,-72.2261,Born,Self,Born - Self
-Education,1989,1990,San Cristobal,Tachira,Venezuela,7.7714,-72.2261,Primary Education,Colegio Don Bosco,Primary Education - Colegio Don Bosco
-Education,1990,1994,San Cristobal,Tachira,Venezuela,7.7714,-72.2261,Primary Education,Escuela Pablo Emilio Gamboa,Primary Education - Escuela Pablo Emilio Gamboa
-Education,1995,2000,San Cristobal,Tachira,Venezuela,7.7714,-72.2261,Secondary Education,Liceo Simon Bolivar,Secondary Education - Liceo Simon Bolivar
-Work,1998,2000,San Cristobal,Tachira,Venezuela,7.7714,-72.2261,Sales Representative,Body Care,Sales Representative - Body Care
-Education,2001,2002,Gainesville,Florida,United States,29.6516,-82.3248,AA Engineering,Santa Fe College,AA Engineering - Santa Fe College
-Education,2003,2005,Gainesville,Florida,United States,29.6516,-82.3248,BS Mechanical Engineering,University of Florida,BS Mechanical Engineering - University of Florida
-Work,2005,2006,Gainesville,Florida,United States,29.6516,-82.3248,Research Assistant,UF Hurricane Research,Research Assistant - UF Hurricane Research
-Work,2007,2008,Muscat,,Oman,23.588,-58.3829,Field Engineer,Schlumberger,Field Engineer - Schlumberger
-Work,2009,2010,Ciudad Ojeda,Zulia,Venezuela,10.2215,-71.3112,Field Engineer,Schlumberger,Field Engineer - Schlumberger
-Work,2011,2013,San Cristobal,Tachira,Venezuela,7.7714,-72.2261,Consultant,Consultant,Consultant - Consultant
-Work,2013,2014,Edmonton,Alberta,Canada,53.5461,-113.4938,QA/QC Representative,Bureau Veritas (TH Hill Associates),QA/QC Representative - Bureau Veritas (TH Hill Associates)
-Work,2014,2018,Calgary,Alberta,Canada,51.0447,-114.0719,Quality Specialist/Engineer,Nabors Industries (Tesco Corporation),Quality Specialist/Engineer - Nabors Industries (Tesco Corporation)
-Work,2018,2019,Calgary,Alberta,Canada,51.0447,-114.0719,Quality Manager,TechnipFMC,Quality Manager - TechnipFMC
-Work,2020,2021,Calgary,Alberta,Canada,51.0447,-114.0719,Quality Assurance Specialist,Fluid Energy Group,Quality Assurance Specialist - Fluid Energy Group
-Work,2021,,Saskatoon,Saskatchewan,Canada,52.1579,-106.6702,Developer,Innovation Credit Union,Developer - Innovation Credit Union
-Education,2007,2007,Paris,,France,48.8566,-2.3522,Drilling and Production Training,Schlumberger,Drilling and Production Training - Schlumberger
-Education,2008,2008,Paris,,France,48.8566,-2.3522,Drilling and Production Training,Schlumberger,Drilling and Production Training - Schlumberger
-Education,2009,2009,Paris,,France,48.8566,-2.3522,Lean Six Sigma,Schlumberger,Lean Six Sigma - Schlumberger
-Education,2010,2010,Bogota,,Colombia,4.711,-74.0721,Management Training,Schlumberger,Management Training - Schlumberger
-Education,2007,2007,Rio de Janeiro,,Brazil,22.9068,-43.1729,Basic Training,Schlumberger,Basic Training - Schlumberger
-Education,2008,2008,Aberdeen,,Scotland,57.1497,-2.0943,Jack-Up Training,Schlumberger,Jack-Up Training - Schlumberger
-Education,2014,2014,Calgary,Alberta,Canada,51.0447,-114.0719,Taproot Root Cause Analysis,Nabors Industries (Tesco Corporation),Taproot Root Cause Analysis - Nabors Industries (Tesco Corporation)
-Education,2019,2019,Houston,Texas,United States,29.7604,-95.3698,Apollo Root Cause Analysis,TechnipFMC,Apollo Root Cause Analysis - TechnipFMC
+Activity,Organization,Role,City,Country,Start,End,Latitude,Longitude,State/Province,Description
+Life,Self,Born,San Cristobal,Venezuela,1983,,7.7714,-72.2261,Tachira,Born - San Cristobal - Venezuela - 1983
+Education,Colegio Don Bosco,Primary Education,San Cristobal,Venezuela,1989,1990,7.7714,-72.2261,Tachira,Colegio Don Bosco - Primary Education - San Cristobal - Venezuela - 1989 - 1990
+Education,Escuela Pablo Emilio Gamboa,Primary Education,San Cristobal,Venezuela,1990,1994,7.7714,-72.2261,Tachira,Escuela Pablo Emilio Gamboa - Primary Education - San Cristobal - Venezuela - 1990 - 1994
+Education,Liceo Simon Bolivar,Secondary Education,San Cristobal,Venezuela,1995,2000,7.7714,-72.2261,Tachira,Liceo Simon Bolivar - Secondary Education - San Cristobal - Venezuela - 1995 - 2000
+Work,Body Care,Sales Representative,San Cristobal,Venezuela,1998,2000,7.7714,-72.2261,Tachira,Body Care - Sales Representative - San Cristobal - Venezuela - 1998 - 2000
+Education,Santa Fe College,AA Engineering,Gainesville,United States,2001,2002,29.6516,-82.3248,Florida,Santa Fe College - AA Engineering - Gainesville - United States - 2001 - 2002
+Education,University of Florida,BS Mechanical Engineering,Gainesville,United States,2003,2005,29.6516,-82.3248,Florida,University of Florida - BS Mechanical Engineering - Gainesville - United States - 2003 - 2005
+Work,UF Hurricane Research,Research Assistant,Gainesville,United States,2005,2006,29.6516,-82.3248,Florida,UF Hurricane Research - Research Assistant - Gainesville - United States - 2005 - 2006
+Work,Schlumberger,Field Engineer,Muscat,Oman,2007,2008,23.588,58.3829,,Schlumberger - Field Engineer - Muscat - Oman - 2007 - 2008
+Work,Schlumberger,Field Engineer,Ciudad Ojeda,Venezuela,2009,2010,10.2215,-71.3112,Zulia,Schlumberger - Field Engineer - Ciudad Ojeda - Venezuela - 2009 - 2010
+Work,Consultant,Consultant,San Cristobal,Venezuela,2011,2013,7.7714,-72.2261,Tachira,Consultant - Consultant - San Cristobal - Venezuela - 2011 - 2013
+Work,Bureau Veritas (TH Hill Associates),QA/QC Representative,Edmonton,Canada,2013,2014,53.5461,-113.4938,Alberta,Bureau Veritas (TH Hill Associates) - QA/QC Representative - Edmonton - Canada - 2013 - 2014
+Work,Nabors Industries (Tesco Corporation),Quality Specialist/Engineer,Calgary,Canada,2014,2018,51.0447,-114.0719,Alberta,Nabors Industries (Tesco Corporation) - Quality Specialist/Engineer - Calgary - Canada - 2014 - 2018
+Work,TechnipFMC,Quality Manager,Calgary,Canada,2018,2019,51.0447,-114.0719,Alberta,TechnipFMC - Quality Manager - Calgary - Canada - 2018 - 2019
+Work,Fluid Energy Group,Quality Assurance Specialist,Calgary,Canada,2020,2021,51.0447,-114.0719,Alberta,Fluid Energy Group - Quality Assurance Specialist - Calgary - Canada - 2020 - 2021
+Work,Innovation Credit Union,Developer,Saskatoon,Canada,2021,Present,52.1579,-106.6702,Saskatchewan,Innovation Credit Union - Developer - Saskatoon - Canada - 2021 - Present
+Education,Schlumberger,Drilling and Production Training,Paris,France,2007,2007,48.8566,-2.3522,,Schlumberger - Drilling and Production Training - Paris - France - 2007 - 2007
+Education,Schlumberger,Drilling and Production Training,Paris,France,2008,2008,48.8566,-2.3522,,Schlumberger - Drilling and Production Training - Paris - France - 2008 - 2008
+Education,Schlumberger,Lean Six Sigma,Paris,France,2009,2009,48.8566,-2.3522,,Schlumberger - Lean Six Sigma - Paris - France - 2009 - 2009
+Education,Schlumberger,Management Training,Bogota,Colombia,2010,2010,4.711,-74.0721,,Schlumberger - Management Training - Bogota - Colombia - 2010 - 2010
+Education,Schlumberger,Basic Training,Rio de Janeiro,Brazil,2007,2007,-22.9068,-43.1729,,Schlumberger - Basic Training - Rio de Janeiro - Brazil - 2007 - 2007
+Education,Schlumberger,Jack-Up Training,Aberdeen,Scotland,2008,2008,57.1497,-2.0943,,Schlumberger - Jack-Up Training - Aberdeen - Scotland - 2008 - 2008
+Education,Nabors Industries (Tesco Corporation),Taproot Root Cause Analysis,Calgary,Canada,2014,2014,51.0447,-114.0719,Alberta,Nabors Industries (Tesco Corporation) - Taproot Root Cause Analysis - Calgary - Canada - 2014 - 2014
+Education,TechnipFMC,Apollo Root Cause Analysis,Houston,United States,2019,2019,29.7604,-95.3698,Texas,TechnipFMC - Apollo Root Cause Analysis - Houston - United States - 2019 - 2019
