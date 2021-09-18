@@ -179,7 +179,9 @@ def st1map_fig(df):
     return dfmap
 
 def indicator_fig_value (year,week,substance):
-    filtered_data = ST1_group_count[(ST1_group_count['_id.YEAR'] == year) & (ST1_group_count['_id.WEEK'] == week) & (ST1_group_count['_id.COLUMN'] == substance)]
+    match_dict = {'WELL PURPOSE': 'NEW', 'YEAR': year, 'WEEK': week, 'SUBSTANCE': substance}
+    group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK', 'COLUMN': '$SUBSTANCE'}
+    filtered_data = query_group_st1(match_dict,group_dict)
     return filtered_data.iloc[0]['count']
 
 st1_substance_list = ['CRUDE BITUMEN', 'CRUDE OIL', 'GAS']
@@ -187,7 +189,9 @@ st1_substance_list = ['CRUDE BITUMEN', 'CRUDE OIL', 'GAS']
 substancedeck = []
 
 def substance_count(substance):
-    filtered_data = ST1_group_count[(ST1_group_count['_id.COLUMN'] == substance)]
+    match_dict = {'WELL PURPOSE': 'NEW', 'SUBSTANCE': substance}
+    group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK', 'COLUMN': '$SUBSTANCE'}
+    filtered_data = query_group_st1(match_dict,group_dict)
     return filtered_data.iloc[0]['count']
 
 def indicator_fig (substance, value):
@@ -213,33 +217,9 @@ for substance in st1_substance_list:
     )
 
 def sunburst_fig(year,week):
-    result = client['AER']['ST1'].aggregate([
-        {
-            '$sort': {
-                'DATE': -1
-            }
-        }, {
-            '$match': {
-                'WELL PURPOSE': 'NEW'
-            }
-        }, {
-            '$group': {
-                '_id': {
-                    'YEAR': '$YEAR', 
-                    'WEEK': '$WEEK',
-                    'DRILLING OPERATION': '$DRILLING OPERATION',
-                    'LICENSEE': '$LICENSEE'
-                }, 
-                'count': {
-                    '$sum': 1
-                }
-            }
-        }
-    ])
-
-    SUN = json_normalize(result)
-    SUN = SUN.sort_values(by=['_id.YEAR', '_id.WEEK'])
-    SUNNY = SUN[(SUN['_id.YEAR'] == year) & (SUN['_id.WEEK'] == week)]
+    match_dict = {'WELL PURPOSE': 'NEW', 'YEAR': year, 'WEEK': week}
+    group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK', 'DRILLING OPERATION': '$DRILLING OPERATION', 'LICENSEE': '$LICENSEE'}
+    SUNNY = query_group_st1(match_dict,group_dict)
     fig =px.sunburst(SUNNY, path=['_id.DRILLING OPERATION', '_id.LICENSEE'], values='count')
     fig.update_layout(        
             height = 800,

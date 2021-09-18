@@ -40,7 +40,7 @@ from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
 from app import app
-from apps import darkauroradash, explorapp, architecture
+from apps import darkauroradash, explorapp, architecture, profile
 
 colors = {
     'background': '#111111',
@@ -100,8 +100,8 @@ def display_page(pathname):
         return explorapp.layout
     elif pathname == '/apps/architecture':
         return architecture.layout
-    #elif pathname == '/apps/profile':
-        #return profile.layout
+    elif pathname == '/apps/profile':
+        return profile.layout
     else:
         return '404'
 
