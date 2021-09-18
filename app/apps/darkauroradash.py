@@ -154,10 +154,7 @@ def mag2hstream(n):
         paper_bgcolor=colors['background'],
         font_color=colors['text']
     )
-    if dfmag2h_1['time_tag'].iloc[0] < today:
-        dash.no_update
-    else:
-        return(figsw2h)
+    return(figsw2h)
 
 @app.callback(
     Output('auroraoval', 'figure'),
