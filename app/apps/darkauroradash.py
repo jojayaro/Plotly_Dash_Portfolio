@@ -16,6 +16,7 @@ import urllib, json
 from plotly.subplots import make_subplots
 from skimage import io
 import datetime
+import time
 
 from app import app
 
@@ -44,7 +45,7 @@ layout = html.Div([
                         dcc.Graph(id='auroraoval'),
                         dcc.Interval(
                             id='intauroraoval',
-                            interval=90*1000, # in milliseconds
+                            interval=60*1000, # in milliseconds
                             n_intervals=0)
                         ], className='card-body')
                 ], className='card')
@@ -57,7 +58,7 @@ layout = html.Div([
                         dcc.Graph(id='rasccamera'),
                         dcc.Interval(
                             id='intrasccamera',
-                            interval=90*1000, # in milliseconds
+                            interval=60*1000, # in milliseconds
                             n_intervals=0)
                         ], className='card-body')
                 ], className='card')
@@ -72,7 +73,7 @@ layout = html.Div([
                         dcc.Graph(id='mag2h-plot'),
                         dcc.Interval(
                             id='intmag2h',
-                            interval=90*1000, # in milliseconds
+                            interval=60*1000, # in milliseconds
                             n_intervals=0)
                         ], className='card-body')
                 ], className='card')
@@ -85,7 +86,7 @@ layout = html.Div([
     Input('intmag2h', 'n_intervals')
 )
 def mag2hstream(n):
-    today = datetime.datetime.now()
+    today = datetime.datetime.today().date()
     urlmag2h = 'https://services.swpc.noaa.gov/products/solar-wind/mag-2-hour.json'
     responsemag2h = urllib.request.urlopen(urlmag2h)
     datamag2h = json.loads(responsemag2h.read().decode())
@@ -96,6 +97,19 @@ def mag2hstream(n):
     dfmag2h_1['time_tag'] = pd.to_datetime(dfmag2h_1['time_tag'])
     dfmag2h_1['bt'] = dfmag2h_1['bt'].astype(float)
     dfmag2h_1['bz_gsm'] = dfmag2h_1['bz_gsm'].astype(float)
+    while not dfmag2h_1['time_tag'].iloc[0] == today:
+        urlmag2h = 'https://services.swpc.noaa.gov/products/solar-wind/mag-2-hour.json'
+        responsemag2h = urllib.request.urlopen(urlmag2h)
+        datamag2h = json.loads(responsemag2h.read().decode())
+        dfmag2h = pd.DataFrame(datamag2h)
+        dfmag2h.columns = dfmag2h.iloc[0]
+        dfmag2h = dfmag2h[1:]
+        dfmag2h_1 = dfmag2h[['time_tag','bt','bz_gsm']]
+        dfmag2h_1['time_tag'] = pd.to_datetime(dfmag2h_1['time_tag'])
+        dfmag2h_1['bt'] = dfmag2h_1['bt'].astype(float)
+        dfmag2h_1['bz_gsm'] = dfmag2h_1['bz_gsm'].astype(float)
+        time.sleep(15)
+
 
     urlplasma2h = 'https://services.swpc.noaa.gov/products/solar-wind/plasma-2-hour.json'
     responseplasma2h = urllib.request.urlopen(urlplasma2h)
