@@ -23,7 +23,32 @@ client = pymongo.MongoClient("mongodb://172.17.0.3:27017/")
 
 mapbox_access_token = open("mapbox").read()
 
-#Classes
+#Functions
+
+##General Group Match Query
+def query_group_st1(match,group):
+    result = client['AER']['ST1'].aggregate([
+            {
+                '$sort': {'DATE': -1}
+            }, {
+                '$match': match
+            }, {
+                '$group': {
+                    '_id': group, 
+                    'count': {
+                        '$sum': 1
+                    }
+                }
+            }
+        ])
+    
+    ST1_group_count = json_normalize(result)
+    ST1_group_count = ST1_group_count.sort_values(by=['_id.YEAR', '_id.WEEK'])
+
+    return ST1_group_count
+
+match_dict = {'WELL PURPOSE': 'NEW'}
+group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK', 'COLUMN': '$SUBSTANCE'}
 
 def query_st1_grouped_3(year,week,column):
 
@@ -81,7 +106,7 @@ d = {
 
 #Graphs
 ##Main Graph
-ST1_group_count = query_st1_grouped_3('$YEAR','$WEEK','$SUBSTANCE')
+ST1_group_count = query_group_st1(match_dict,group_dict)
 
 weeklydataperyear = px.bar(ST1_group_count, x = ST1_group_count['_id.WEEK'], 
                 y = ST1_group_count['count'], 
@@ -97,7 +122,7 @@ weeklydataperyear.update_layout(xaxis=dict(title='Week', showgrid=False, zerolin
             font_color=colors['text']
             )
 
-##Classes
+##Functions
 ##ST1 Map
 
 def st1_map(year,week):
@@ -336,12 +361,12 @@ def filtered_weekly_yearly(clkd_data):
     prevent_initial_call=True
 
 )
-def toggle_modal(clkd_data, n1, n2, is_open):
-    if n1 or n2:
-        return False
+def toggle_modal(clkd_data, n2, is_open):
+    if clkd_data or n2:
+        return not is_open
     elif clkd_data is None:
         dash.no_update
     else:
         print(f'clickData: {clkd_data}')
         licence = clkd_data['points'][0]['customdata'][0]
-        return True, licence
+        return is_open, licence

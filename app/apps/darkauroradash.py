@@ -148,10 +148,10 @@ layout = html.Div([
     prevent_initial_call=True
 )
 def mag2hstream(n):
-    today = datetime.datetime.today().date()
-    if magdf()['time_tag'].iloc[0] < today:
-        dash.no_update
-    else:
+    #today = datetime.datetime.today().date()
+    #if magdf()['time_tag'].iloc[0] < today:
+        #dash.no_update
+    #else:
         return mag_fig(magdf(),plasmadf())
 
 @app.callback(
