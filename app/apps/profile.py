@@ -3,13 +3,21 @@ import dash_bootstrap_components as dbc
 from dash import dcc
 import pandas as pd
 import plotly.graph_objects as go
+from dash.dependencies import Input, Output, State
+from app import app
+import dash
+
 
 
 CONTENT_STYLE = {
     "padding": "1rem 1rem",
 }
 
-profile_df = pd.read_csv("profile.csv")
+profile_df = pd.read_csv("apps/assets/profile.csv")
+profile_table = profile_df.drop(columns=['City','Latitude', 'Longitude', 'State/Province', 'Description'])
+#sort profile_table by column End
+profile_table = profile_table.sort_values(by=['End'], ascending=False)
+
 
 d = {
     'Life': 'green',
@@ -40,7 +48,7 @@ def map_fig(df):
             ),
             text=df[df['Activity'] == sub]['Description'],
             name=sub,
-            #customdata=df[df['SUBSTANCE'] == sub]['LICENCE NUMBER'],
+            customdata=df[df['Activity'] == sub]['Country'],
         ))
 
     dfmap.update_layout(
@@ -83,5 +91,34 @@ layout = html.Div([
                 ], className='card')
             ],style = CONTENT_STYLE)),
         ),
+        dbc.Row(
+            dbc.Col(html.Div([
+                dbc.Card([
+                    dbc.CardBody([
+                            dbc.Table.from_dataframe(profile_table, striped=True, bordered=True, hover=True, id = 'profile_table'),
+                        ], className='card-body')
+                ], className='card')
+            ],style = CONTENT_STYLE)),
+        ),
 ])
+
+#callback to update the table based on the marker clicked
+@app.callback(
+    Output('profile_table', 'data'),
+    [Input('profile_map', 'clickData')]
+    )
+#function to update the table based on the marker clicked
+def update_table(clickData):
+    if clickData is None:
+        dash.no_update
+    else:
+        print(f'clickData: {clickData}')
+        country = clickData['points'][0]['customdata'][0]
+        #filter the table based on the country
+        filtered_df = profile_df[profile_df['Country'] == country]
+        return filtered_df.to_dict('records')
+
+
+
+
 

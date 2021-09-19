@@ -322,7 +322,7 @@ def filtered_weekly_yearly(clkd_data):
     if clkd_data is None:
         dash.no_update
     else:
-        print(f'clickData: {clkd_data}')
+        #print(f'clickData: {clkd_data}')
         week = clkd_data['points'][0]['x']
         year = clkd_data['points'][0]['customdata'][0]
 
@@ -338,14 +338,12 @@ def filtered_weekly_yearly(clkd_data):
     Output("modal-body", "children"),
     [Input('st1map', 'clickData'), Input("close", "n_clicks")],
     [State("modal", "is_open")],
-    prevent_initial_call=True
-
 )
 def toggle_modal(clkd_data, n2, is_open):
     if clkd_data or n2:
         return not is_open
-    elif clkd_data is None:
-        dash.no_update
+    #elif clkd_data is None:
+        #dash.no_update
     else:
         print(f'clickData: {clkd_data}')
         licence = clkd_data['points'][0]['customdata'][0]
