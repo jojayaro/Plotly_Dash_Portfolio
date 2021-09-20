@@ -156,7 +156,7 @@ weeklydataperyear.update_layout(xaxis=dict(title='Week', showgrid=False, zerolin
 
 def st1map_fig(df):
     
-    midpoint = (np.average(df['Lat']), np.average(df['Long']))
+    #midpoint = (np.average(df['Lat']), np.average(df['Long']))
     
     dfmap = go.Figure()
 
@@ -186,8 +186,8 @@ def st1map_fig(df):
             accesstoken=mapbox_access_token,
             bearing=0,
             center=go.layout.mapbox.Center(
-                lat=midpoint[0],
-                lon=midpoint[1]
+                lat=53.9333,
+                lon=116.5765
             ),
             pitch=0,
             zoom=4,
@@ -246,7 +246,7 @@ layout = html.Div([
                     dbc.Card([
                         dbc.CardBody([
                             html.H4("Alberta Licence and Spud Data", className='card-title'),
-                            html.P("This project takes licence and spud data provided by the Alberta Energy Regulator daily in text format. This data is then parsed using a python script and inserted into a MongoDB database. The transformed data is then used to feed this Dashboard", className='card-text'),
+                            html.P("This project takes licence and spud data provided by the Alberta Energy Regulator (AER) daily in text format. This data is then parsed and transformed using a python script and loaded into a MongoDB database. MongoDB feeds the dashboard directly without fully relying on Pandas", className='card-text'),
                         ])
                     ]),
                     dbc.Card([
@@ -272,7 +272,9 @@ layout = html.Div([
                     dbc.CardBody([
                         html.H4("New Licences issued per week", className='card-title'),
                         html.P("Click on an specific week/year to update labels and graphs (showing current week by default)", className='card-text'),
-                        dcc.Graph(id = 'weeklydataperyear', figure = weeklydataperyear)
+                        html.P("Clicking on the legend allows you to remove or add years to the graph", className='card-text'),
+                        html.P("(Source: AER)", className='card-text'),
+                       dcc.Graph(id = 'weeklydataperyear', figure = weeklydataperyear)
                         ])
                 ])
             ],style = CONTENT_STYLE)),
@@ -283,6 +285,7 @@ layout = html.Div([
                     dbc.CardBody([
                         html.H4("Approximate locations of wells", className='card-title'),
                         html.P("Based on ST1 data", className='card-text'),
+                        html.P("(Source: AER)", className='card-text'),
                         dcc.Graph(id = 'st1map', figure = st1map_fig(st1_map(current_year,current_week)))
                         ])
                 ])
@@ -292,9 +295,10 @@ layout = html.Div([
             dbc.Col(html.Div([
                 dbc.Card([
                     dbc.CardBody([
-                        html.H4("Licensee(s) and Type of Operation", className='card-title'),
+                        html.H4("Licensee(s) by Type of Operation", className='card-title'),
                         html.P("Based on current week or clicked data", className='card-text'),
                         html.P("Press on the type of operation to drill down", className='card-text'),
+                        html.P("(Source: AER)", className='card-text'),
                         dcc.Graph(id = 'licensees', figure = sunburst_fig(current_year,current_week))
                         ])
                 ])

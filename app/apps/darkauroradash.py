@@ -103,6 +103,7 @@ layout = html.Div([
                     dbc.CardBody([
                         html.H4("Aurora Forecast", className='card-title'),
                         html.P("Aurora Oval - Northern Hemisphere", className='card-text'),
+                        html.P("(Source: NOAA SWPC)", className='card-text'),
                         dcc.Graph(id='auroraoval'),
                         dcc.Interval(
                             id='intauroraoval',
@@ -115,7 +116,8 @@ layout = html.Div([
                 dbc.Card([
                     dbc.CardBody([
                         html.H4("All Sky Camera", className='card-title'),
-                        html.P("Camera at RASC Calgary", className='card-text'),
+                        html.P("Live stream feed from Calgary", className='card-text'),
+                        html.P("(Source: RASC Calgary)", className='card-text'),
                         dcc.Graph(id='rasccamera'),
                         dcc.Interval(
                             id='intrasccamera',
@@ -130,7 +132,9 @@ layout = html.Div([
                 dbc.Card([
                     dbc.CardBody([
                         html.H4("Real-Time Solar Wind", className='card-title'),
-                        html.P("Magnetic Plot - 2 hour", className='card-text'),
+                        html.P("Magnetic and Plasma Plot - 2 hour", className='card-text'),
+                        html.P("(Source: NOAA SWPC)", className='card-text'),
+                        html.P("Note: Double click on data to auto resize the axes", className='card-text'),
                         dcc.Graph(id='mag2h-plot', figure = mag_fig(magdf(),plasmadf())),
                         dcc.Interval(
                             id='intmag2h',
