@@ -1,10 +1,15 @@
 import dash
 import dash_bootstrap_components as dbc
-from flask import Flask
 
-server = Flask(__name__)
+#Deployment
+#from flask import Flask
+#server = Flask(__name__)
+#app = dash.Dash(server=server, external_stylesheets=[dbc.themes.DARKLY])
 
-app = dash.Dash(server=server, external_stylesheets=[dbc.themes.DARKLY])
+#Development
+app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.DARKLY])
+server = app.server
+
 app.title = 'Jesus Jayaro'
 
 app.index_string = """<!DOCTYPE html>
@@ -108,5 +113,9 @@ def display_page(pathname):
         return '404'
 
 if __name__ == '__main__':
-    app.run_server()
+    	
+    #deployment
+	#app.run_server()
 
+    #development
+    app.run_server(host="127.0.0.1", port="8050", debug=True)
