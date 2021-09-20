@@ -58,7 +58,8 @@ app.layout = dbc.Container([
             children=[
                 dbc.DropdownMenuItem("Explorapp", href='/apps/explorapp'),
                 dbc.DropdownMenuItem("Dark Aurora Dashboard", href="/apps/darkauroradash"),
-                #dbc.DropdownMenuItem("Naked Eye Aurora", href='/'),
+                dbc.DropdownMenuItem("DepthAI Traffic Analysis", disabled=True),
+                dbc.DropdownMenuItem("Naked Eye Aurora", disabled=True),
             ],
             nav=True,
             in_navbar=True,
