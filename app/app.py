@@ -63,7 +63,8 @@ app.layout = dbc.Container([
             nav=True,
             in_navbar=True,
         ),
-        dbc.NavItem(dbc.NavLink("LinkedIn", href="https://ca.linkedin.com/in/jayaro"))
+        dbc.NavItem(dbc.NavLink("LinkedIn", href="https://ca.linkedin.com/in/jayaro")),
+        dbc.NavItem(dbc.NavLink("GitHub", href="https://github.com/jojayaro"))
     ],
     brand="Jesus Jayaro",
     brand_href="/",
