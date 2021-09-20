@@ -15,15 +15,28 @@ import datetime
 
 from app import app
 
-today = datetime.datetime.today()
-current_week = today.isocalendar()[1]
-current_year = today.isocalendar()[0]
-
+#Variables
 client = pymongo.MongoClient("mongodb://172.17.0.3:27017/")
 
 mapbox_access_token = open("mapbox").read()
 
+st1_substance_list = ['CRUDE BITUMEN', 'CRUDE OIL', 'GAS']
+
+substancedeck = []
+
 #Functions
+##ST1 Map
+
+def st1_map(year,week):
+    if year == all and week == all:
+        query1 = {'WELL PURPOSE': 'NEW'}
+        result = client['AER']['ST1'].find(query1)
+        ST1 =  pd.DataFrame(list(result))
+    else:
+        query1 = {'WELL PURPOSE': 'NEW', 'YEAR': year, 'WEEK': week}
+        result = client['AER']['ST1'].find(query1)
+        ST1 =  pd.DataFrame(list(result))
+    return ST1
 
 ##General Group Match Query
 def query_group_st1(match,group):
@@ -80,6 +93,12 @@ def query_st1_grouped_3(year,week,column):
 
     return ST1_group_count
 
+def indicator_fig_value (year,week,substance):
+    match_dict = {'WELL PURPOSE': 'NEW', 'YEAR': year, 'WEEK': week, 'SUBSTANCE': substance}
+    group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK', 'COLUMN': '$SUBSTANCE'}
+    filtered_data = query_group_st1(match_dict,group_dict)
+    return filtered_data.iloc[0]['count']
+
 
 #CSS
 colors = {
@@ -104,6 +123,17 @@ d = {
     'MISCELLANEOUS': 'cyan',
 }
 
+#Date Calculations
+today = datetime.datetime.today()
+week = today.isocalendar()[1]
+current_year = today.isocalendar()[0]
+
+try:
+    indicator_fig_value(current_year, week,'GAS')
+    current_week = today.isocalendar()[1]
+except KeyError:
+    current_week = today.isocalendar()[1] - 1
+    
 #Graphs
 ##Main Graph
 ST1_group_count = query_group_st1(match_dict,group_dict)
@@ -123,18 +153,6 @@ weeklydataperyear.update_layout(xaxis=dict(title='Week', showgrid=False, zerolin
             )
 
 ##Functions
-##ST1 Map
-
-def st1_map(year,week):
-    if year == all and week == all:
-        query1 = {'WELL PURPOSE': 'NEW'}
-        result = client['AER']['ST1'].find(query1)
-        ST1 =  pd.DataFrame(list(result))
-    else:
-        query1 = {'WELL PURPOSE': 'NEW', 'YEAR': year, 'WEEK': week}
-        result = client['AER']['ST1'].find(query1)
-        ST1 =  pd.DataFrame(list(result))
-    return ST1
 
 def st1map_fig(df):
     
@@ -177,16 +195,6 @@ def st1map_fig(df):
         )
     )
     return dfmap
-
-def indicator_fig_value (year,week,substance):
-    match_dict = {'WELL PURPOSE': 'NEW', 'YEAR': year, 'WEEK': week, 'SUBSTANCE': substance}
-    group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK', 'COLUMN': '$SUBSTANCE'}
-    filtered_data = query_group_st1(match_dict,group_dict)
-    return filtered_data.iloc[0]['count']
-
-st1_substance_list = ['CRUDE BITUMEN', 'CRUDE OIL', 'GAS']
-
-substancedeck = []
 
 def substance_count(substance):
     match_dict = {'WELL PURPOSE': 'NEW', 'SUBSTANCE': substance}
