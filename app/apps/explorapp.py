@@ -187,7 +187,7 @@ def st1map_fig(df):
             bearing=0,
             center=go.layout.mapbox.Center(
                 lat=53.9333,
-                lon=116.5765
+                lon=-116.5765
             ),
             pitch=0,
             zoom=4,
