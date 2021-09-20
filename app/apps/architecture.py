@@ -55,10 +55,10 @@ layout = html.Div([
             dbc.Col(html.Div([
                 dbc.Card([
                     dbc.CardBody([
-                        html.H4("Improvements:", className='card-text'),
+                        html.H4("Future Improvements:", className='card-text'),
                         html.Li("Refactor code to split into layouts, functions, style, etc. Code begins to get messy when using a broken by app approach", className='card-text'),
                         html.Li("Create views at the Database level to improve queries/code", className='card-text'),
-                        html.Li("Automate more current CI/CD process", className='card-text'),
+                        html.Li("Automate more the current CI/CD process", className='card-text'),
                         html.Li("Evaluate using Airflow for pipelines", className='card-text'),
                         html.Li("Evaluate moving Python scripts into serverless functions", className='card-text'),
                         html.Li("Evaluate moving database into cluster and implementing Longhorn or equivalent", className='card-text'),
