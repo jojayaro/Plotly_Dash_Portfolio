@@ -15,7 +15,6 @@ import datetime
 
 from app import app
 
-#Variables
 client = pymongo.MongoClient("mongodb://172.17.0.3:27017/")
 
 mapbox_access_token = open("mapbox").read()
@@ -24,7 +23,6 @@ st1_substance_list = ['CRUDE BITUMEN', 'CRUDE OIL', 'GAS']
 
 substancedeck = []
 
-#Functions
 ##ST1 Map
 
 def st1_map(year,week):
@@ -42,56 +40,32 @@ def st1_map(year,week):
 def query_group_st1(match,group):
     result = client['AER']['ST1'].aggregate([
             {
-                '$sort': {'DATE': -1}
-            }, {
                 '$match': match
-            }, {
+            }, 
+            {
                 '$group': {
                     '_id': group, 
                     'count': {
                         '$sum': 1
                     }
                 }
+            },
+            {
+                '$sort': {
+                    'YEAR': -1, 
+                    'WEEK': -1, 
+                    '_id': 1
+                }
             }
-        ])
+                ])
     
     ST1_group_count = json_normalize(result)
-    ST1_group_count = ST1_group_count.sort_values(by=['_id.YEAR', '_id.WEEK'])
+    #ST1_group_count = ST1_group_count.sort_values(by=['_id.YEAR', '_id.WEEK'])
 
     return ST1_group_count
 
 match_dict = {'WELL PURPOSE': 'NEW'}
 group_dict = {'YEAR': '$YEAR', 'WEEK': '$WEEK'}
-
-def query_st1_grouped_3(year,week,column):
-
-    result = client['AER']['ST1'].aggregate([
-        {
-            '$sort': {
-                'DATE': -1
-            }
-        }, {
-            '$match': {
-                'WELL PURPOSE': 'NEW'
-            }
-        }, {
-            '$group': {
-                '_id': {
-                    'YEAR': year, 
-                    'WEEK': week,
-                    'COLUMN': column
-                }, 
-                'count': {
-                    '$sum': 1
-                }
-            }
-        }
-    ])
-
-    ST1_group_count = json_normalize(result)
-    ST1_group_count = ST1_group_count.sort_values(by=['_id.YEAR', '_id.WEEK'])
-
-    return ST1_group_count
 
 def indicator_fig_value (year,week,substance):
     match_dict = {'WELL PURPOSE': 'NEW', 'YEAR': year, 'WEEK': week, 'SUBSTANCE': substance}
