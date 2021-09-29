@@ -103,7 +103,7 @@ week = today.isocalendar()[1]
 current_year = today.isocalendar()[0]
 
 try:
-    indicator_fig_value(current_year, week,'GAS') & indicator_fig_value(current_year, week,'CRUDE BITUMEN') & indicator_fig_value(current_year, week,'CRUDE OIL') & indicator_fig_value(current_year, week,'WATER') & indicator_fig_value(current_year, week,'BRINE') & indicator_fig_value(current_year, week,'LPG') & indicator_fig_value(current_year, week,'COALBED METHANE') & indicator_fig_value(current_year, week,'CRUDE OIL')
+    indicator_fig_value(current_year, week,'GAS') & indicator_fig_value(current_year, week,'CRUDE BITUMEN') & indicator_fig_value(current_year, week,'CRUDE OIL')
     current_week = today.isocalendar()[1]
 except KeyError:
     current_week = today.isocalendar()[1] - 1
