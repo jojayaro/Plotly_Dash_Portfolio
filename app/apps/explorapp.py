@@ -105,7 +105,7 @@ current_year = today.isocalendar()[0]
 try:
     indicator_fig_value(current_year, week,'GAS') & indicator_fig_value(current_year, week,'CRUDE BITUMEN') & indicator_fig_value(current_year, week,'CRUDE OIL')
     current_week = today.isocalendar()[1]
-except KeyError:
+except:
     current_week = today.isocalendar()[1] - 1
     
 #Graphs
