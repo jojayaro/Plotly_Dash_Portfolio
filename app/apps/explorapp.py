@@ -15,7 +15,7 @@ import datetime
 
 from app import app
 
-client = pymongo.MongoClient("mongodb://172.17.0.3:27017/")
+client = pymongo.MongoClient("mongodb://172.17.0.2:27017/")
 
 mapbox_access_token = open("mapbox").read()
 
