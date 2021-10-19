@@ -69,8 +69,16 @@ app.layout = dbc.Container([
             nav=True,
             in_navbar=True,
         ),
-        dbc.NavItem(dbc.NavLink("LinkedIn", href="https://ca.linkedin.com/in/jayaro")),
-        dbc.NavItem(dbc.NavLink("GitHub", href="https://github.com/jojayaro"))
+        dbc.DropdownMenu(
+            label='Social',
+            children=[
+                dbc.DropdownMenuItem("LinkedIn", href='https://ca.linkedin.com/in/jayaro'),
+                dbc.DropdownMenuItem("GitHub", href="https://github.com/jojayaro"),
+                dbc.DropdownMenuItem("Flickr", href="https://www.flickr.com/photos/xchus"),
+            ],
+            nav=True,
+            in_navbar=True,
+        ),
     ],
     brand="Jesus Jayaro",
     brand_href="/",
