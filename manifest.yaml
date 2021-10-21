@@ -1,0 +1,10 @@
+project: default
+source:
+  repoURL: 'https://github.com/jojayaro/Plotly_Dash_Portfolio.git'
+  path: .
+  targetRevision: main
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: ingress
+syncPolicy:
+  automated: {}
