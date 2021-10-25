@@ -1,6 +1,8 @@
-FROM python:3.8-slim-buster
+FROM ubuntu:latest
 RUN apt-get update
-RUN apt-get install nano
+RUN apt-get upgrade
+RUN apt-get install python3 -y
+RUN apt-get install python3-pip -y
  
 RUN mkdir wd
 WORKDIR wd

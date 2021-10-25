@@ -37,7 +37,8 @@ layout = html.Div([
                         html.Li("MongoDB", className='card-text'),
                         html.Li("Plotly Dash", className='card-text'),
                         html.Li("Elasticsearch, Fluentd, Kibana (EFK)", className='card-text'),
-                        html.Li("Portainer", className='card-text'),                ])
+                        html.Li("Portainer", className='card-text'),
+                    ])
             ],style = CONTENT_STYLE)),
         ),
         dbc.Row(
