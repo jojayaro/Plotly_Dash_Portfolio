@@ -13,4 +13,4 @@ COPY app/ ./
 
 EXPOSE 8501
 
-CMD [ "gunicorn", "--workers=5", "--threads=1", "-b 0.0.0.0:8501", "app:server"]
+CMD [ "gunicorn", "--workers=5", "--threads=1", "-b 0.0.0.0:8501", "index:server"]
