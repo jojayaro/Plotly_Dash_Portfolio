@@ -11,7 +11,7 @@ body = html.Div([
             dbc.Col(
                 [
                     html.Div([
-                    html.Img(src='/assets/architecture.jpg', width = '100%'),
+                    html.Img(src='/assets/architecturenew.jpg', width = '100%'),
                     ])#, style={"margin": "50px 250px"})
                 ]
             )
