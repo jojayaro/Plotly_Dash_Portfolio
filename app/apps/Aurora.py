@@ -105,6 +105,11 @@ def figxray(dfxray_1):
         yaxis3=dict(showgrid=False),# range=[200, 800]),
         xaxis4=dict(showgrid=False),
         yaxis4=dict(showgrid=False),
+        legend=dict(
+        orientation="h",
+        xanchor="center",
+        x=0.5
+        ),
         plot_bgcolor=colors['background'],
         paper_bgcolor=colors['background'],
         font_color=colors['text']
@@ -128,7 +133,7 @@ def epam():
     return dfepam_1
 
 def figepam(dfepam_1):
-    figepam = make_subplots(rows=3, cols=1)
+    figepam = make_subplots(rows=2, cols=1)
     figepam.add_trace(go.Scatter(x=dfepam_1['time_tag'], y=dfepam_1['de1'],
                         mode='lines',
                         name='Electrons 175-315'),1,1)
@@ -140,20 +145,20 @@ def figepam(dfepam_1):
                         name='Protons 47-68'),2,1)
     figepam.add_trace(go.Scatter(x=dfepam_1['time_tag'], y=dfepam_1['p3'],
                         mode='lines',
-                        name='Protons 115-195'),3,1)
+                        name='Protons 115-195'),2,1)
     figepam.add_trace(go.Scatter(x=dfepam_1['time_tag'], y=dfepam_1['p5'],
                         mode='lines',
-                        name='Protons 310-580'),3,1)
+                        name='Protons 310-580'),2,1)
     figepam.add_trace(go.Scatter(x=dfepam_1['time_tag'], y=dfepam_1['fp6p'],
                         mode='lines',
-                        name='Protons 795-1193'),3,1)
+                        name='Protons 795-1193'),2,1)
     figepam.add_trace(go.Scatter(x=dfepam_1['time_tag'], y=dfepam_1['p7'],
                         mode='lines',
-                        name='Protons 1060-1900'),3,1)                        
+                        name='Protons 1060-1900'),2,1)                        
 
     figepam.update_layout(
         height=800,# width=650,
-        xaxis1=dict(showgrid=False),# zerolinecolor='grey'),
+        xaxis1=dict(showgrid=False, visible = False),# zerolinecolor='grey'),
         yaxis1=dict(showgrid=False),# zerolinecolor='grey', range=[-30, 30]),
         xaxis2=dict(showgrid=False),
         yaxis2=dict(showgrid=False),# type="log", range=[np.log10(1),np.log10(100)]),
@@ -161,6 +166,11 @@ def figepam(dfepam_1):
         yaxis3=dict(showgrid=False),# range=[200, 800]),
         xaxis4=dict(showgrid=False),
         yaxis4=dict(showgrid=False),
+        legend=dict(
+        orientation="h",
+        xanchor="center",
+        x=0.5
+        ),
         plot_bgcolor=colors['background'],
         paper_bgcolor=colors['background'],
         font_color=colors['text']
@@ -215,14 +225,19 @@ def mag_fig(dfmag2h_1,dfp2h_1):
 
     figsw2h.update_layout(
         height=800,# width=650,
-        xaxis1=dict(showgrid=False, zerolinecolor='grey'),
+        xaxis1=dict(showgrid=False, zerolinecolor='grey', visible = False),
         yaxis1=dict(showgrid=False, zerolinecolor='grey', range=[-30, 30]),
-        xaxis2=dict(showgrid=False),
+        xaxis2=dict(showgrid=False, visible = False),
         yaxis2=dict(showgrid=False, type="log", range=[np.log10(1),np.log10(100)]),
-        xaxis3=dict(showgrid=False),
+        xaxis3=dict(showgrid=False, visible = False),
         yaxis3=dict(showgrid=False, range=[200, 800]),
         xaxis4=dict(showgrid=False),
         yaxis4=dict(showgrid=False),
+        legend=dict(
+        orientation="h",
+        xanchor="center",
+        x=0.5
+        ),
         plot_bgcolor=colors['background'],
         paper_bgcolor=colors['background'],
         font_color=colors['text']
@@ -241,7 +256,7 @@ dbc.Row([
 dbc.Row([
     dbc.Col(
         html.Div([
-                dcc.Graph(id='suvi131', figure=suvi131()),
+                dcc.Graph(id='suvi131', figure=suvi131(), config={'displayModeBar': False}),
                 html.P("GOES-16 SUVI Composite 131 Angstroms (Source: NOAA SWPC)"),
                 dcc.Interval(
                     id='intimages',
@@ -250,7 +265,7 @@ dbc.Row([
         ], style={"margin": "200px 10px", 'textAlign': 'center'}), width = 5),
     dbc.Col(
         html.Div([
-            dcc.Graph(id='xray', figure = figxray(xray())),
+            dcc.Graph(id='xray', figure = figxray(xray()), config={'displayModeBar': False}),
             html.P("GOES X-Ray Flux (Source: NOAA SWPC)"),
             dcc.Interval(
                 id='intgraphs',
@@ -261,24 +276,24 @@ dbc.Row([
 dbc.Row([
     dbc.Col(
         html.Div([
-            dcc.Graph(id='epam', figure = figepam(epam())),
+            dcc.Graph(id='epam', figure = figepam(epam()), config={'displayModeBar': False}),
             html.P("Electron Proton Alpha Monitor (Source: NOAA SWPC)"),
         ], style={"margin": "0px 10px", 'textAlign': 'center'}), width=7),
     dbc.Col(
         html.Div([
-                dcc.Graph(id='auroraoval', figure = auroraoval()),
+                dcc.Graph(id='auroraoval', figure = auroraoval(), config={'displayModeBar': False}),
                 html.P("Aurora Oval - Northern Hemisphere (Source: NOAA SWPC)"),
         ], style={"margin": "200px 10px", 'textAlign': 'center'}), width=5),
 ]),
 dbc.Row([
     dbc.Col(
         html.Div([
-                dcc.Graph(id='rasccamera', figure = rasccalgary()),
+                dcc.Graph(id='rasccamera', figure = rasccalgary(), config={'displayModeBar': False}),
                 html.P("Live stream feed from Calgary (Source: RASC Calgary)"),
         ], style={"margin": "200px 10px", 'textAlign': 'center'}), width = 5),
     dbc.Col(
         html.Div([
-            dcc.Graph(id='mag2h-plot', figure = mag_fig(magdf(),plasmadf())),
+            dcc.Graph(id='mag2h-plot', figure = mag_fig(magdf(),plasmadf()), config={'displayModeBar': False}),
                         html.P("Magnetic and Plasma Plot - 2 hour (Source: NOAA SWPC)"),
             html.P("Note: Double click on data to auto resize the axes"),
             dcc.Interval(
@@ -290,7 +305,7 @@ dbc.Row([
 dbc.Row(
     dbc.Col(
         html.Div([
-                dcc.Graph(id='weather', figure = geocolor()),
+                dcc.Graph(id='weather', figure = geocolor(), config={'displayModeBar': False}),
                 html.P("GOES-16 GeoColor (Source: NOAA)"),
                 dcc.Interval(
                     id='intgeocolor',

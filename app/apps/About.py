@@ -47,6 +47,11 @@ def map_fig(df):
         plot_bgcolor=colors['background'],
         paper_bgcolor=colors['background'],
         font_color=colors['text'],
+        legend=dict(
+        orientation="h",
+        xanchor="center",
+        x=0.5
+        ),
         mapbox=dict(
             accesstoken=mapbox_access_token,
             bearing=0,
@@ -77,7 +82,7 @@ dbc.Row([
                         html.P('On the research side, I have always made it my priority to perform market research and intelligence to be up to date with latest trends and technologies in order to differentiate services and products offered and be at the cutting edge, and to better gauge where the market is heading.', style={"padding": "0.5rem"}),
             ], style = {'margin-top':'30px', 'padding':'100px 30px'}), width = 7),
             dbc.Col(html.Div([
-                dcc.Graph(id = 'profile_map', figure = map_fig(profile_df))
+                dcc.Graph(id = 'profile_map', figure = map_fig(profile_df), config={'displayModeBar': False})
             ]), width = 5),
         ]),
         dbc.Row([

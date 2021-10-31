@@ -117,7 +117,11 @@ weeklydataperyear = px.bar(ST1_group_count, x = ST1_group_count['_id.WEEK'],
 
 weeklydataperyear.update_layout(xaxis=dict(title='Week', showgrid=False, zerolinecolor='grey'),
             yaxis=dict(title='Count',showgrid=False),
-            legend=dict(title='Year'),
+            legend=dict(title='Year',
+            orientation="h",
+            xanchor="center",
+            x=0.5
+            ),
             plot_bgcolor=colors['background'],
             paper_bgcolor=colors['background'],
             font_color=colors['text']
@@ -153,6 +157,11 @@ def st1map_fig(df):
         plot_bgcolor=colors['background'],
         paper_bgcolor=colors['background'],
         font_color=colors['text'],
+        legend=dict(
+        orientation="h",
+        xanchor="center",
+        x=0.5
+        ),
         mapbox=dict(
             accesstoken=mapbox_access_token,
             bearing=0,
@@ -232,34 +241,34 @@ dbc.Row([
 
                     Clicking on the legend allows you to remove or add years to the graph.
                     '''),
-                ],style = {'margin':'400px 50px', 'textAlign': 'center'}), width = 6),
+                ],style = {'margin':'100px 10px', 'textAlign': 'center'}), width = 6),
                 dbc.Col(html.Div([
                     html.H4("Sample Text File"),
                     html.Img(src='/assets/samplefile.png', width = '100%')
                 ],style = {'margin':'100px 10px', 'textAlign': 'center'}), width = 6),
         ]),
         dbc.Row([
-            dbc.Col(dcc.Graph(id = 'CRUDE BITUMEN', figure = indicator_fig('CRUDE BITUMEN', indicator_fig_value(current_year, current_week, 'CRUDE BITUMEN'))), width = 4),
-            dbc.Col(dcc.Graph(id = 'CRUDE OIL', figure = indicator_fig('CRUDE OIL', indicator_fig_value(current_year, current_week, 'CRUDE OIL'))), width = 4),
-            dbc.Col(dcc.Graph(id = 'GAS', figure = indicator_fig('GAS', indicator_fig_value(current_year, current_week, 'GAS'))), width = 4)
+            dbc.Col(dcc.Graph(id = 'CRUDE BITUMEN', figure = indicator_fig('CRUDE BITUMEN', indicator_fig_value(current_year, current_week, 'CRUDE BITUMEN')), config={'displayModeBar': False}), width = 4),
+            dbc.Col(dcc.Graph(id = 'CRUDE OIL', figure = indicator_fig('CRUDE OIL', indicator_fig_value(current_year, current_week, 'CRUDE OIL')), config={'displayModeBar': False}), width = 4),
+            dbc.Col(dcc.Graph(id = 'GAS', figure = indicator_fig('GAS', indicator_fig_value(current_year, current_week, 'GAS')), config={'displayModeBar': False}), width = 4)
         ]),
         dbc.Row([
             dbc.Col(html.Div([
-                       dcc.Graph(id = 'weeklydataperyear', figure = weeklydataperyear),
+                       dcc.Graph(id = 'weeklydataperyear', figure = weeklydataperyear, config={'displayModeBar': False}),
                        html.P("New Licences issued per week (Source: AER ST1)")
-            ],style = {'margin':'150px 10px', 'textAlign': 'center'}), width = 6
+            ],style = {'margin':'150px 0px', 'textAlign': 'center'}), width = 6
             ),
             dbc.Col(
                 html.Div([
-                        dcc.Graph(id = 'st1map', figure = st1map_fig(st1_map(current_year,current_week))),
+                        dcc.Graph(id = 'st1map', figure = st1map_fig(st1_map(current_year,current_week)), config={'displayModeBar': False}),
                         html.P("Approximate locations of wells (Source: AER)"),
-            ],style = {'margin':'0px 10px', 'textAlign': 'center'})
+            ],style = {'margin':'0px 0px', 'textAlign': 'center'})
             ),
         ]),
         dbc.Row([
             dbc.Col(
                 html.Div([
-                        dcc.Graph(id = 'licensees', figure = sunburst_fig(current_year,current_week)),
+                        dcc.Graph(id = 'licensees', figure = sunburst_fig(current_year,current_week), config={'displayModeBar': False}),
                         html.P("Licensee(s) by Type of Operation (Source: AER)"),
             ],style = {'margin':'0px 10px', 'textAlign': 'center'}), width = 7
             ),
