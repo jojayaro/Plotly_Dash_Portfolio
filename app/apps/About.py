@@ -76,10 +76,20 @@ dbc.Row([
 ]),
         dbc.Row([
             dbc.Col(html.Div([
-                        html.P("Being a child of two university professors I had the opportunity to play with computers from an early age. This sparked my curiosity into how computer systems work and their endless applications. I listened to university computer science courses, and even participated in computer building and maintenance workshops. This enabled me to deep dive into computer science and fall in love with it as a kid.", style={"padding": "0.5rem"}),
-                        html.P('All of this plus my passion for energy, led me to pursue my studies in Mechanical Engineering and focus in Instrumentation and Measurements and Control Systems. During my college years I worked for a Hurricane Research project where we deployed real-time data acquisition and monitoring systems during the 2005 and 2006 Hurricane Season. Field deployments included major Hurricanes Dennis, Katrina, and Wilma.', style={"padding": "0.5rem"}),
-                        html.P('After graduation, I worked for different oil and gas services companies in Operations, and Product and Service Quality. Focus was on Automation, Reliability, Root Cause Analysis and Lean Six Sigma. I had to perform data analysis, design, develop, and deploy real-time reporting and collaboration solutions to be able to provide the best strategies to eliminate non-conformities and non-productive time, which in turn allowed the team to minimize red money and maximize customer success and promote sales growth while creating a great experience for all customers. ', style={"padding": "0.5rem"}),
-                        html.P('On the research side, I have always made it my priority to perform market research and intelligence to be up to date with latest trends and technologies in order to differentiate services and products offered and be at the cutting edge, and to better gauge where the market is heading.', style={"padding": "0.5rem"}),
+                        dcc.Markdown('''
+Energy, the thing that has allowed us to evolve, and the same thing that holds us back. It is a precious resource which we rely on, and something that can be taken away as well. We are inefficient at transforming it, or perhaps primitive, and there is a lot of wasted energy. Efficiency is our end goal, minimize the waste. How to achieve it?
+  
+Energy or effort is used or exerted everywhere, there is always room to make anything more efficient. It is studied and applied in many different ways.
+  
+One area that is vital to our existence is Agriculture. Here we are very inefficient in many ways such as distance traveled from farm to table or the amount of excess fertilizer used. One way to mitigate this is in-situ farming, producing as much as possible locally. This can also generate jobs locally that are sustainable over time. This is also now possible even at high latitude locations due to the availability of LEDs, which currently is also the most efficient lighting solution all around.
+  
+Another area is Lean, in short you want to improve to achieve excellence and deliver value. To improve you must measure, and to be able to measure you need data. Advances in technology have enabled us to collect data about everything every second. The opportunity to excel as an individual, community, organization, or a nation is within our reach.
+  
+Space Weather is something that is not widely discussed. Just like weather is monitored on Earth, there are instruments in space which provide data on solar physics among other things. This data can be useful to predict the occurrence of aurora borealis, with the caveat that you have only about thirty minutes to an hour of head start. Data is open and available to the public through NOAA. How is this related to energy? Some solar events have caused damage to energy infrastructure in the past, and a greater event could set us back technologically.
+  
+Last, idling wastes energy, so traffic analysis is essential in improving energy use. Computer vision has enabled us to automate this highly labor intensive and manual data collection task with high accuracy. Alongside other technologies such as Cloud Native Edge Computing, Autonomous Drones, 5G, and Reinforcement Learning the opportunity to improve traffic regardless of means of transportation needs to be exploited. These technologies also open many doors to improve many aspects of our communities.
+                        '''
+                        ),
             ], style = {'margin-top':'30px', 'padding':'100px 30px'}), width = 7),
             dbc.Col(html.Div([
                 dcc.Graph(id = 'profile_map', figure = map_fig(profile_df), config={'displayModeBar': False})

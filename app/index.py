@@ -49,32 +49,6 @@ style_icon = {
     'font-size':'40px'
 }
 
-carousel = dbc.Carousel(
-    items=[
-        {
-            "key": "1",
-            "src": "/assets/images/Main.jpg",
-            "header": "Nothing in life is to be feared, it is only to be understood.",
-            "caption": "- Marie Curie",
-        },
-        {
-            "key": "2",
-            "src": "/assets/images/Forest.jpg",
-            "header": "Nothing in life is to be feared, it is only to be understood.",
-            "caption": "- Marie Curie",
-        },
-        {
-            "key": "3",
-            "src": "/assets/images/dji_0111_resized.jpg",
-            "header": "Nothing in life is to be feared, it is only to be understood.",
-            "caption": "- Marie Curie",
-        },
-    ],
-    variant="dark",
-    interval=5000,
-    ride="carousel",
-)
-
 style_bottombar = {
     'width': '100%',
     #'height': '100%',
@@ -111,10 +85,9 @@ bottombar = html.Div([dbc.Nav([
 body = [
             dbc.Row(
                     dbc.Col(html.Div([
-                        html.H1('Success Architect'),
+                        html.H1('Hyperautomation Solutions'),
                         html.H3('''
-                        Leveraging data and technology to optimize business processes, drive performance, deliver value, 
-                        create a great experience, and ensure success.
+                        Leveraging data and technology to optimize and automate processes that deliver value and ensure success.
                         '''),
                         html.H3(''),
                         dbc.Button("Contact", href = 'https://ca.linkedin.com/in/jayaro', color="primary", className="me-1"),

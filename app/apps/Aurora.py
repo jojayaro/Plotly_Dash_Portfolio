@@ -262,7 +262,7 @@ dbc.Row([
                     id='intimages',
                     interval=60*1000, # in milliseconds
                     n_intervals=0)
-        ], style={"margin": "200px 10px", 'textAlign': 'center'}), width = 5),
+        ], style={"margin": "200px 10px", 'textAlign': 'center'}), width = 6),
     dbc.Col(
         html.Div([
             dcc.Graph(id='xray', figure = figxray(xray()), config={'displayModeBar': False}),
@@ -271,26 +271,26 @@ dbc.Row([
                 id='intgraphs',
                 interval=60*1000, # in milliseconds
                 n_intervals=0)
-        ], style={"margin": "0px 10px", 'textAlign': 'center'}), width=7),
+        ], style={"margin": "0px 10px", 'textAlign': 'center'}), width=6),
 ]),
 dbc.Row([
     dbc.Col(
         html.Div([
             dcc.Graph(id='epam', figure = figepam(epam()), config={'displayModeBar': False}),
             html.P("Electron Proton Alpha Monitor (Source: NOAA SWPC)"),
-        ], style={"margin": "0px 10px", 'textAlign': 'center'}), width=7),
+        ], style={"margin": "0px 10px", 'textAlign': 'center'}), width=6),
     dbc.Col(
         html.Div([
                 dcc.Graph(id='auroraoval', figure = auroraoval(), config={'displayModeBar': False}),
                 html.P("Aurora Oval - Northern Hemisphere (Source: NOAA SWPC)"),
-        ], style={"margin": "200px 10px", 'textAlign': 'center'}), width=5),
+        ], style={"margin": "200px 10px", 'textAlign': 'center'}), width=6),
 ]),
 dbc.Row([
     dbc.Col(
         html.Div([
                 dcc.Graph(id='rasccamera', figure = rasccalgary(), config={'displayModeBar': False}),
                 html.P("Live stream feed from Calgary (Source: RASC Calgary)"),
-        ], style={"margin": "200px 10px", 'textAlign': 'center'}), width = 5),
+        ], style={"margin": "200px 10px", 'textAlign': 'center'}), width = 6),
     dbc.Col(
         html.Div([
             dcc.Graph(id='mag2h-plot', figure = mag_fig(magdf(),plasmadf()), config={'displayModeBar': False}),
@@ -300,7 +300,7 @@ dbc.Row([
                 id='intgraphs',
                 interval=60*1000, # in milliseconds
                 n_intervals=0)
-        ], style={"margin": "0px 10px", 'textAlign': 'center'}), width=7),
+        ], style={"margin": "0px 10px", 'textAlign': 'center'}), width=6),
 ]),
 dbc.Row(
     dbc.Col(
