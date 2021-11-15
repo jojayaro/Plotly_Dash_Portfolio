@@ -91,9 +91,6 @@ Last, idling wastes energy, so traffic analysis is essential in improving energy
                         '''
                         ),
             ], style = {'margin-top':'30px', 'padding':'100px 30px'}), width = 7),
-            dbc.Col(html.Div([
-                dcc.Graph(id = 'profile_map', figure = map_fig(profile_df), config={'displayModeBar': False})
-            ]), width = 5),
         ]),
         dbc.Row([
             dbc.Col(html.Div([
@@ -128,6 +125,11 @@ Last, idling wastes energy, so traffic analysis is essential in improving energy
                 ])
             ]),width = 4),
         ],style = {'margin':'100px 100px'}),
+        dbc.Row(
+                        dbc.Col(html.Div([
+                dcc.Graph(id = 'profile_map', figure = map_fig(profile_df), config={'displayModeBar': False})
+            ]), width = 12),
+        ),
         dbc.Row(
             dbc.Col(html.Div([
                         html.H3("Experience"),

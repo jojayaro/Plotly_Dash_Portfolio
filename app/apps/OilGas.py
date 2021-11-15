@@ -196,11 +196,11 @@ def indicator_fig (substance, value):
 )
     return indicator
 
-for substance in st1_substance_list:
-    substancedeck.append(dbc.Col(
-                dcc.Graph(id = substance, figure = indicator_fig(substance, indicator_fig_value(current_year, current_week, substance))), width = 4                             
-        )
-    )
+#for substance in st1_substance_list:
+#    substancedeck.append(dbc.Col(
+#                dcc.Graph(id = substance, figure = indicator_fig(substance, indicator_fig_value(current_year, current_week, substance))), width = 4                             
+#        )
+#    )
 
 
 def sunburst_fig(year,week):
