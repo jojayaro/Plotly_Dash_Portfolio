@@ -12,7 +12,7 @@ import datetime
 
 from app import app
 
-client = pymongo.MongoClient("mongodb://192.168.86.72:27017/")
+client = pymongo.MongoClient("mongodb://192.168.86.200:27017/")
 
 mapbox_access_token = open("mapbox").read()
 
@@ -104,6 +104,21 @@ try:
     current_week = today.isocalendar()[1]
 except:
     current_week = today.isocalendar()[1] - 1
+
+try:
+    sub_val_gas = indicator_fig_value(current_year, week,'GAS')
+except:
+    sub_val_gas = 0
+
+try:
+    sub_val_bit = indicator_fig_value(current_year, week,'CRUDE BITUMEN')
+except:
+    sub_val_bit = 0
+
+try:
+    sub_val_oil = indicator_fig_value(current_year, week,'CRUDE OIL')
+except:
+    sub_val_oil = 0
     
 #Graphs
 ##Main Graph
@@ -248,9 +263,9 @@ dbc.Row([
                 ],style = {'margin':'100px 10px', 'textAlign': 'center'}), width = 6),
         ]),
         dbc.Row([
-            dbc.Col(dcc.Graph(id = 'CRUDE BITUMEN', figure = indicator_fig('CRUDE BITUMEN', indicator_fig_value(current_year, current_week, 'CRUDE BITUMEN')), config={'displayModeBar': False}), width = 4),
-            dbc.Col(dcc.Graph(id = 'CRUDE OIL', figure = indicator_fig('CRUDE OIL', indicator_fig_value(current_year, current_week, 'CRUDE OIL')), config={'displayModeBar': False}), width = 4),
-            dbc.Col(dcc.Graph(id = 'GAS', figure = indicator_fig('GAS', indicator_fig_value(current_year, current_week, 'GAS')), config={'displayModeBar': False}), width = 4)
+            dbc.Col(dcc.Graph(id = 'CRUDE BITUMEN', figure = indicator_fig('CRUDE BITUMEN', sub_val_bit), config={'displayModeBar': False}), width = 4),
+            dbc.Col(dcc.Graph(id = 'CRUDE OIL', figure = indicator_fig('CRUDE OIL', sub_val_oil), config={'displayModeBar': False}), width = 4),
+            dbc.Col(dcc.Graph(id = 'GAS', figure = indicator_fig('GAS', sub_val_gas), config={'displayModeBar': False}), width = 4)
         ]),
         dbc.Row([
             dbc.Col(html.Div([
@@ -294,9 +309,24 @@ def filtered_weekly_yearly(clkd_data):
         week = clkd_data['points'][0]['x']
         year = clkd_data['points'][0]['customdata'][0]
 
-        CRUDE_BITUMEN = indicator_fig('CRUDE BITUMEN', indicator_fig_value (year,week,'CRUDE BITUMEN'))
-        CRUDE_OIL = indicator_fig('CRUDE OIL', indicator_fig_value (year,week,'CRUDE OIL'))
-        GAS = indicator_fig('GAS', indicator_fig_value (year,week,'GAS'))
+        try:
+            val_gas = indicator_fig_value(year, week,'GAS')
+        except:
+            val_gas = 0
+
+        try:
+            val_bit = indicator_fig_value(year, week,'CRUDE BITUMEN')
+        except:
+            val_bit = 0
+
+        try:
+            val_oil = indicator_fig_value(year, week,'CRUDE OIL')
+        except:
+            val_oil = 0
+
+        CRUDE_BITUMEN = indicator_fig('CRUDE BITUMEN', val_bit)
+        CRUDE_OIL = indicator_fig('CRUDE OIL', val_oil)
+        GAS = indicator_fig('GAS', val_gas)
         st1map = st1map_fig(st1_map(year,week))
         lic_fig = sunburst_fig(year,week)
         return CRUDE_BITUMEN, CRUDE_OIL, GAS, st1map, lic_fig

@@ -302,17 +302,17 @@ dbc.Row([
                 n_intervals=0)
         ], style={"margin": "0px 10px", 'textAlign': 'center'}), width=6),
 ]),
-dbc.Row(
-    dbc.Col(
-        html.Div([
-                dcc.Graph(id='weather', figure = geocolor(), config={'displayModeBar': False}),
-                html.P("GOES-16 GeoColor (Source: NOAA)"),
-                dcc.Interval(
-                    id='intgeocolor',
-                    interval=60*10000, # in milliseconds
-                    n_intervals=0)
-        ], style={"margin": "0px 10px", 'textAlign': 'center', 'width':'100%'}), width=12),
-)
+# dbc.Row(
+#     dbc.Col(
+#         html.Div([
+#                 dcc.Graph(id='weather', figure = geocolor(), config={'displayModeBar': False}),
+#                 html.P("GOES-16 GeoColor (Source: NOAA)"),
+#                 dcc.Interval(
+#                     id='intgeocolor',
+#                     interval=60*10000, # in milliseconds
+#                     n_intervals=0)
+#         ], style={"margin": "0px 10px", 'textAlign': 'center', 'width':'100%'}), width=12),
+# )
 ]
 
 @app.callback(
@@ -334,9 +334,9 @@ def mag2hstream(n):
 def imagescb(n):
     return auroraoval(), rasccalgary(), suvi131()
 
-@app.callback(
-    Output('weather', 'figure'),
-    Input('intgeocolor', 'n_intervals')
-)
-def imagescb(n):
-    return geocolor()
+# @app.callback(
+#     Output('weather', 'figure'),
+#     Input('intgeocolor', 'n_intervals')
+# )
+# def imagescb(n):
+#     return geocolor()

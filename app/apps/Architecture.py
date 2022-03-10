@@ -35,7 +35,7 @@ body = html.Div([
                         html.H4("Data Pipeline", style={"padding": "0.5rem"}),
                         html.Ul([                        
                         html.Li("NOAA and RASC Calgary feed data to the Aurora Dashboard in real-time (refresh rate of 1 min)", ),
-                        html.Li("AER provides daily data in text files that go through an ETL process and into a MongoDB database using Python scripts", ),
+                        html.Li("AER provides daily data in text files that go through an ELT and into a MongoDB database using Python scripts", ),
                         html.Li("MongoDB is used to feed the Explorapp Dashboard directly instead of fully relying on Pandas", ),
                         ])
             ],style = CONTENT_STYLE)),

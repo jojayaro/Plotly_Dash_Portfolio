@@ -1,7 +1,6 @@
 FROM ubuntu:latest
 RUN apt-get update
-RUN apt-get upgrade
-RUN apt-get install python3 -y
+RUN apt-get upgrade -y
 RUN apt-get install python3-pip -y
  
 RUN mkdir wd
@@ -13,4 +12,4 @@ COPY app/ ./
 
 EXPOSE 8501
 
-CMD [ "gunicorn", "--workers=5", "--threads=1", "-b 0.0.0.0:8501", "index:server"]
+CMD ["gunicorn", "-b 0.0.0.0:8501", "-w 5", "--worker-class=gevent", "--timeout=90", "--threads=1", "--max-requests=100", "--max-requests-jitter=10", "index:server"]
