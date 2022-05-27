@@ -1,4 +1,7 @@
-# Repository for Plotly Dash Portfolio webapp's container
-This container is used to deploy a Plotly Dash app in a single node local MicroK8s Kubernetes Cluster currently powering jayaro.dev
+# Portfolio built on Plotly Dash (Currently offline)
 
-## Architecture and more details on the webapp can be found at jayaro.dev
+This is the code for my portfolio built in Plotly Dash. I have always had a passion for computer science and only until recently I made the move into IT. Most of my career has been focused on data analysis so I started by exploring the Developer and Data Engineering world. I decided to use Plotly Dash since I consider it the best open source front-end framework for data professionals. In trying to understand the overall picture in development, I tried to develop a full-stack solution, which included installing a server, deploying a single node Kubernetes cluster, a database, and the webapp. There is still a lot to learn but it helped me understand how everything works together.
+
+The portfolio has data projects around my hobbies and interests, such as the Aurora Borealis, Energy, among others. Data is presented in different intervals, from real-time to daily refreshes, depending on the project. One of these projects is based on one of my [repos](https://github.com/jojayaro/Exploration_App) which is a parser that converts text files to CSVs and uploads them to a database daily. This repo is currently being refactored to Rust as part of my learning process, and possible migration of this project completely to Rust.
+
+I stopped hosting the portfolio because I’m exploring moving everything to Rust and it was taxing my bandwidth unnecessarily, sometimes consuming up to a 1TB/Month in bandwidth.
